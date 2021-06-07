@@ -1,3 +1,4 @@
+#reference https://www.techwithtim.net/tutorials/python-programming/sudoku-solver-backtracking/
 # GUI.py
 import pygame
 from solved import check, solve
@@ -183,13 +184,8 @@ def main():
     start = time.time()
     strikes = 0
     while run:
-        file=open('time1.txt','w')
-        
+       
         play_time = round(time.time() - start)
-        convert=str(play_time)
-        file.write(convert)
-        
-        file.close()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -227,7 +223,6 @@ def main():
 
                         if board.is_finished():
                             print("You Won")
-                            print("You have completed your game in:",mat)
                             run = False
 
             if event.type == pygame.MOUSEBUTTONDOWN:
