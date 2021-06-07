@@ -32,7 +32,7 @@ class Grid:
     def update_model(self):
         self.model = [[self.cubes[i][j].value for j in range(self.cols)] for i in range(self.rows)]
         
-    #placing the cubes and numbers & solving suduko at the backup
+    #placing the cubes ,numbers & solving suduko at the backup
     def place(self, val):
         row, col = self.selected
         if self.cubes[row][col].value == 0:
@@ -52,8 +52,9 @@ class Grid:
         row, col = self.selected
         self.cubes[row][col].set_temp(val)
 
+    # Draw Grid Lines     
     def draw(self, win):
-        # Draw Grid Lines
+        
         gap = self.width / 9 #gap in the lines
         for i in range(self.rows+1):
             if i == 3 or i == 6:
@@ -78,7 +79,7 @@ class Grid:
         self.cubes[row][col].selected = True
         self.selected = (row, col)
 
-    #to clear the cubes if wrong no inputed
+    #to clear the cubes if wrong number inputed
     def clear(self):
         row, col = self.selected
         if self.cubes[row][col].value == 0:
@@ -107,6 +108,7 @@ class Cube:
     rows = 9
     cols = 9
 
+    #initializing all variables
     def __init__(self, value, row, col, width ,height):
         self.value = value
         self.temp = 0
@@ -116,6 +118,7 @@ class Cube:
         self.height = height
         self.selected = False
 
+    #draw the board
     def draw(self, win):
         fnt = pygame.font.SysFont("comicsans", 40)
 
@@ -135,11 +138,13 @@ class Cube:
             
         #draw rectangle on selecting the cube
         if self.selected:
-            pygame.draw.rect(win, (255,0,0), (x,y, gap ,gap), 3)
+            pygame.draw.rect(win, (255,0,0), (x,y, gap ,gap), 4)
 
+    #set the value 
     def set(self, val):
         self.value = val
 
+    #set the temp value
     def set_temp(self, val):
         self.temp = val
 
@@ -162,7 +167,7 @@ def format_time(secs):
     sec = secs%60
     minute = secs//60
     hour = minute//60
-    file=open('time2.txt','w')
+    file=open('time.txt','w')
     mat = " " + str(hour) + ":"  + str(minute) + ":" + str(sec)
     file.write('You have completed your game in:'+ mat)
     file.close()

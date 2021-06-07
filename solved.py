@@ -21,7 +21,7 @@ def solve(board):
 
     for i in range(1,10):
         if check(board,i,( row, col)):#calling check function 
-            board[row][col] = i#using the indexex got in find function to update the board
+            board[row][col] = i#using the indexex got in find_empty function to update the board
 
             if solve(board):#calling solve function to solve the matrix again and again
                 return True
@@ -60,12 +60,12 @@ def check(board, row, col):
 grid lines below is the code"""
 
 def print_board(board):
-    for i in range(len(board)):
+    for i in range(0,9):
         line = "" #keeping this empty so we can work on it later
         if i == 3 or i == 6:
             print("---------------------")
         #nested loop  
-        for j in range(len(board)):
+        for j in range(0,9):
             if j == 3 or j == 6:
                 line += "| "
             line += str(board[i][j])+" " #saving all the numbers in the line variable to print it next

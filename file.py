@@ -1,5 +1,4 @@
 from tkinter import *
-#from gui import format_time
 window=Tk()
 window.geometry('350x200')
 window.title('File Handling')
@@ -12,8 +11,10 @@ def read():
         infile=open(file_entry.get())
         lbl=Label(window,text=infile.read())
         lbl.pack()
+        infile.close()
     except FileNotFoundError as err:
         print(err)
+        
 btn=Button(window,text='read file',command=read)
 btn.pack()
 window.mainloop()
